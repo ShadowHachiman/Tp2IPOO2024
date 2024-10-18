@@ -1,0 +1,47 @@
+a) Descripción del uso de LocalDateTime
+LocalDateTime es una clase introducida en Java 8 dentro del paquete java.time, diseñado para manejar fechas y horas sin zona horaria. Combina una fecha (LocalDate) y una hora (LocalTime) en una sola clase. Es particularmente útil cuando se necesita trabajar con fechas y horas, pero sin tener que lidiar con la complejidad de zonas horarias.
+
+b) Problemas que resuelve y cómo lo hace
+Antes de Java 8, el manejo de fechas y tiempos era complicado debido al uso de clases como java.util.Date y java.util.Calendar, que tenían una API confusa, eran mutables y no proporcionaban métodos claros para manipular fechas y horas.
+
+    LocalDateTime resuelve estos problemas:
+
+    Inmutabilidad: Las instancias de LocalDateTime son inmutables, lo que mejora la seguridad en aplicaciones concurrentes.
+    API fluida: Permite realizar cálculos y manipulaciones en fechas y horas de una manera más clara y fluida.
+    Precisión y flexibilidad: Facilita el trabajo con fechas y horas sin zonas horarias y ofrece precisión hasta los nanosegundos.
+    Legibilidad: Proporciona métodos con nombres descriptivos, lo que hace el código más legible.
+
+c) Ejemplos de uso de LocalDateTime:
+
+    Obtener la fecha y hora actuales:
+
+        LocalDateTime ahora = LocalDateTime.now();
+        System.out.println("Fecha y hora actuales: " + ahora);
+
+    Crear una fecha y hora específica:
+
+        LocalDateTime fechaEspecifica = LocalDateTime.of(2024, Month.OCTOBER, 10, 14, 30);
+        System.out.println("Fecha específica: " + fechaEspecifica);
+
+    Agregar y restar tiempo:
+
+        LocalDateTime ahora = LocalDateTime.now();
+        LocalDateTime unaSemanaDespues = ahora.plusWeeks(1);
+        System.out.println("Una semana después: " + unaSemanaDespues);
+
+    Comparar fechas:
+
+        LocalDateTime fecha1 = LocalDateTime.of(2024, Month.OCTOBER, 10, 14, 30);
+        LocalDateTime fecha2 = LocalDateTime.of(2024, Month.OCTOBER, 15, 10, 0);
+        boolean esAntes = fecha1.isBefore(fecha2);
+        System.out.println("¿Fecha1 es antes que Fecha2?: " + esAntes);
+
+    Formatear y parsear fechas:
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTime ahora = LocalDateTime.now();
+        String fechaFormateada = ahora.format(formato);
+        System.out.println("Fecha formateada: " + fechaFormateada);
+
+        LocalDateTime parseada = LocalDateTime.parse("10-10-2024 14:30", formato);
+        System.out.println("Fecha parseada: " + parseada);

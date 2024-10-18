@@ -1,0 +1,4 @@
+El Chain of Responsibility, El patrón sugiere que vincules esos manejadores en una cadena.
+Cada manejador vinculado tiene un campo para almacenar una referencia al siguiente manejador
+de la cadena. Además de procesar una solicitud, los manejadores la pasan a lo largo de la cadena.
+La solicitud viaja por la cadena hasta que todos los manejadores han tenido la oportunidad de procesarla.

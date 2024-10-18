@@ -1,0 +1,48 @@
+e) Descripción del uso de Instant
+
+    Instant es una clase introducida en Java 8 dentro del paquete java.time que representa un momento exacto en el tiempo con una precisión hasta los nanosegundos. El valor que contiene es la cantidad de segundos y nanosegundos desde el Epoch (1 de enero de 1970, 00:00:00 UTC). A diferencia de LocalDateTime, que no tiene información de zona horaria, Instant siempre representa un momento en el tiempo en relación con la hora estándar de UTC.
+
+f) Problemas que resuelve y cómo lo hace
+Antes de Java 8, la clase java.util.Date era usada para representar un punto en el tiempo, pero tenía varias limitaciones:
+
+    Ambigüedad: La clase Date incluía una noción implícita de zona horaria, lo que causaba confusión.
+    Mutabilidad: Date era mutable, lo que podía generar errores difíciles de rastrear en aplicaciones concurrentes.
+    API poco clara: La API de Date y Calendar era confusa y difícil de manejar.
+
+Instant resuelve estos problemas al:
+
+    Proporcionar un momento absoluto en el tiempo, sin necesidad de zona horaria.
+    Ser inmutable: Esto permite manipularlo en entornos concurrentes de manera segura.
+    Facilitar comparaciones y cálculos de tiempo de manera clara y eficiente.
+
+g) Ejemplos de uso de Instant
+    Obtener el momento actual:
+
+        Instant ahora = Instant.now();
+        System.out.println("Momento actual: " + ahora);
+
+    Crear un Instant a partir de un número de segundos desde el Epoch:
+
+        Instant desdeEpoch = Instant.ofEpochSecond(10000);
+        System.out.println("Desde Epoch: " + desdeEpoch);
+
+    Agregar y restar tiempo a un Instant:
+
+        Instant ahora = Instant.now();
+        Instant diezSegundosDespues = ahora.plusSeconds(10);
+        Instant cincoMinutosAntes = ahora.minusSeconds(300);
+        System.out.println("10 segundos después: " + diezSegundosDespues);
+        System.out.println("5 minutos antes: " + cincoMinutosAntes);
+
+    Comparar dos instantes:
+
+        Instant antes = Instant.now();
+        Instant despues = antes.plusSeconds(60);
+        boolean esAntes = antes.isBefore(despues);
+        System.out.println("¿Antes es antes que después?: " + esAntes);
+
+    Convertir Instant a otra clase de tiempo (como LocalDateTime):
+
+        Instant ahora = Instant.now();
+        LocalDateTime fechaHora = LocalDateTime.ofInstant(ahora, ZoneId.systemDefault());
+        System.out.println("Fecha y hora local: " + fechaHora);
